@@ -1,7 +1,7 @@
 # IA Survey System
 The Project sponsored by Interns Australia had the objective of gathering more information from their surveys and analysing the information better. It requires a survey system (in the form of a website) that is linked from IA NationBuilder Platform. 
 
-This repository is transfered from original [Benkaiser](https://github.com/benkaiser/iasurvey)
+This repository is transfered from origin [Benkaiser](https://github.com/benkaiser/iasurvey)
 ## Installation
 
 Dependencies:
