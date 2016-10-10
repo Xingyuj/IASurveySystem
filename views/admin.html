@@ -1,0 +1,21 @@
+{% extends 'base/backend_base.html' %}
+
+{% block title %}Surveys - Interns Australia{% endblock %}
+
+{% block content %}
+	<div class="jumbotron">
+  		<h1>Welcome!</h1>
+  	    </br>
+		<p>This is a page where admin management will be presented</p>
+		<br/>
+		<p>
+
+			<a href="/admin/surveys" class="btn btn-primary" ID="surveyButton">Manage Surveys</a>
+  			<a href="/admin/results" class="btn btn-primary" ID="resultButton">View result</a>
+  			{% if isAdmin %}
+  			<a href="/admin/staff" class="btn btn-primary" ID="staffButton">Manage Staff</a>
+			{% endif %}
+		</p>
+  	</div>
+
+{% endblock %}

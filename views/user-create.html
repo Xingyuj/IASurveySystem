@@ -1,0 +1,81 @@
+{% extends 'base/backend_base.html' %}
+
+{% block title %}Create User - Interns Australia{% endblock %}
+
+{% block content %}
+<script>
+  function submitForm(){
+    var username = document.getElementById("uname");
+    var password = document.getElementById("password");
+    var confirmPwd = document.getElementById("confirmPwd");
+    var form = document.getElementById("userCreateForm");
+
+    if(username.value === '') {
+      alert("Sorry! Username cannot be empty!");
+      return;
+    }
+    else if (password.value !== confirmPwd.value){
+      alert("Oops! New Password and Confirm Password do not match");
+      return;
+    }
+    else if(password.value === ''){
+      alert("Sorry! Password cannot be empty!");
+      return;
+    }
+    else{
+      form.submit();
+    }
+  }
+</script>
+
+  <div class="row">
+    <div class="col-md-3">
+      <ul class="nav nav-pills nav-stacked" role="tablist">
+        <li role="createUser" class="active"><a href="/admin/staff/create">Create User</a></li>
+
+        <li role="accountUpdate"><a href="/admin/staff">Account Update</a></li>
+      </ul>
+    </div>
+    <div class="col-md-9" role="main">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <div class="panel-title">This is the user-create page</div>
+        </div>
+        <div class="panel-body">
+          <div class="create_user">
+            {% if error %}
+            <div class="alert alert-danger" role="alert">
+            <p>{{error}}</p>
+            </div>
+            {% endif %}
+            <form id="userCreateForm" class="form" role="form" method="post">
+            <div class="form-group">
+              <label for="inputUsername">Username</label>
+              <!-- input username -->
+              <input type="text" class="form-control" placeholder="User Name" name="uname" id="uname">
+              </br>
+              <label for="inputPassword">Password</label>
+              <!-- input password -->
+              <input type="password" placeholder="Password" class="form-control" id="password" name="password"/>
+              <br/>
+              <label for="confirmPassword">Confirm Password</label>
+              <!-- confirm password -->
+              <input name='confirmPwd' type="password" placeholder="Confirm Password" class="form-control" id="confirmPwd"/>
+              <br/>
+              <!--checkbox -->
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="isAdmin">Administrator
+                </label>
+              </div>
+              </br>
+              <button type="button" class='btn btn-primary' value="Create" onclick="submitForm()"/>Create</button>
+              <a href="/admin/staff" class='btn btn-default' id="backButton">Back</a>
+            </div>
+            </form>
+         </div>
+        </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

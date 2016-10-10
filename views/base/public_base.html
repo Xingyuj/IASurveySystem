@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{% block title %}Interns Australia{% endblock %}</title>
+
+  <script type="text/javascript" src="/static/js/libs/head.load.min.js"></script>
+
+  <script type="text/javascript">
+  head.load(
+    "/static/css/libs/bootstrap.min.css",
+    "/static/css/libs/font-awesome.min.css",
+    "/static/css/public.css",
+    "/static/css/layout.css"
+    );
+  </script>
+  {% block head %}
+  {% endblock %}
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Interns Australia</a>
+        </div>
+        {%block navbar %}
+        {% endblock %}
+      </nav>
+    </div>
+  <div class="content">
+    {% block content %}
+    {% endblock %}
+  </div>
+  <div class="footer">
+    <p>© Interns Australia</p>
+  </div>
+  </div>
+  <script type="text/javascript">
+    head.js(
+      "/static/js/libs/jquery.min.js",
+      "/static/js/libs/bootstrap.min.js"
+    );
+  </script>
+  {% block scripts %}
+  {% endblock %}
+</body>
+</html>

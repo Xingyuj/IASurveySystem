@@ -1,0 +1,29 @@
+{% extends 'base/backend_base.html' %}
+
+{% block title %}Admin - Interns Australia{% endblock %}
+
+{% block content %}
+      <div class="context">
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+          <p>{{error}}</p>
+        </div>
+        {% endif %}
+      <div class="sign_in">
+        <form class="form" role="form" method="post" action="/admin/login">
+          <h3>Sign In</h3>
+          <div class="form-group">
+            <label for="inputUsername">Username</label>
+            <!-- input username -->
+            <input type="username" class="form-control" id="txtUserName" placeholder="Username" name="txtUserName">
+            </br>
+            <label for="inputPassword">Password</label>
+            <!-- input password -->
+            <input type="password" class="form-control" id="txtUserPwd" placeholder="Password" name="txtUserPwd">
+            <br/>
+            <button type="submit" class="btn btn-primary" id="btnSub">Sign in</button>
+          </div>
+        </form>
+      </div>
+      </div>
+{% endblock %}

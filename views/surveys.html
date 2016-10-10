@@ -1,0 +1,52 @@
+{% extends 'base/backend_base.html' %}
+
+{% block title %}Surveys - Interns Australia{% endblock %}
+
+{% block content %}
+  <h1>Manage Surveys</h1>
+  <p>
+    <a id="surveyCreate" class='btn btn-primary' href="/admin/surveys/create">Create New</a>
+  </p>
+  <form action="/admin/staff" method="post">
+    <table class="table">
+      <tr>
+        <th>Survey Name</th>
+        <th>Prompt</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+      {% for survey in surveys %}
+        <tr>
+          <td>{{survey.title}}</td>
+          <td>{{survey.prompt}}</td>
+          <td><span class="label {% if survey.status == 'draft' %}label-primary{% elseif survey.status == 'active' %}label-success{% else %}label-danger{% endif %}">{{survey.status}}</span></td>
+          <td>
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                Actions <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                {% if survey.status == 'draft' %}
+                <li><a href="/admin/surveys/edit/{{survey._id|safe}}">Edit</a></li>
+                <li><a href="/admin/surveys/edit/{{survey._id|safe}}?clone=true">Clone</a></li>
+                <li class="divider"></li>
+                <li><a href="/admin/surveys/publish/{{survey._id|safe}}">Publish</a></li>
+                {% endif %}
+                {% if survey.status == 'active' %}
+                <li><a href="/admin/surveys/edit/{{survey._id|safe}}?clone=true">Clone</a></li>
+                <li class="divider"></li>
+                <li><a href="/admin/surveys/deactivate/{{survey._id|safe}}">Deactivate</a></li>
+                {% endif %}
+                {% if survey.status == 'deactive' %}
+                <li><a href="/admin/surveys/edit/{{survey._id|safe}}?clone=true">Clone</a></li>
+                <li class="divider"></li>
+                <li><a href="/admin/surveys/activate/{{survey._id|safe}}">Activate</a></li>
+                {% endif %}
+              </ul>
+            </div>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  </form>
+{% endblock %}

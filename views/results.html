@@ -1,0 +1,25 @@
+{% extends 'base/backend_base.html' %}
+
+{% block title %}Results - Interns Australia{% endblock %}
+
+{% block content %}
+  <h1>View Results</h1>
+  <form action="/admin/results" method="post">
+    <table class="table">
+      <tr>
+        <th>Survey Name</th>
+        <th>Number of Results</th>
+        <th>Action</th>
+      </tr>
+      {% for survey in surveys %}
+      <tr>
+        <td>{{survey.title}}</td>
+        <td>{{survey.results.length}}</td>
+        <td>
+          <a class='btn btn-primary' href="/admin/results/{{survey._id|safe}}">View</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </form>
+{% endblock %}

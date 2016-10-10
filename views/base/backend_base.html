@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Interns Australia Admin{% endblock %}</title>
+
+    <script type="text/javascript" src="/static/js/libs/head.load.min.js"></script>
+
+    <script type="text/javascript">
+      head.load(
+        "/static/css/libs/bootstrap.min.css",
+        "/static/css/libs/font-awesome.min.css",
+        "/static/css/layout.css",
+        "/static/css/admin.css"
+      );
+    </script>
+    {% block head %}
+    {% endblock %}
+  </head>
+  <body>
+  <div class="container">
+    <div class="header">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <a href="/admin" class="navbar-brand">Interns Australia</a>
+        </div>
+        {% if loggedIn %}
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a id="surLi" href="/admin/surveys">Manage Surveys</a></li>
+            <li><a id="resLi" href="/admin/results">View Results</a></li>
+            {% if isAdmin %}
+            <li><a id="staLi" href="/admin/staff">Manage Staff</a></li>
+            {% endif %}
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/admin/password-update">{{username}}</a></li>
+            <li><a href="/admin/login?logout">Logout</a></li>
+          </ul>
+        </div>
+        {% endif %}
+        {%block navbar %}
+        {% endblock %}
+      </nav>
+    </div>
+  <div class="content">
+    {% block content %}
+    {% endblock %}
+  </div>
+  <div class="footer">
+    <p>© Interns Australia</p>
+  </div>
+  </div>
+  <script type="text/javascript">
+    head.js(
+      "/static/js/libs/jquery.min.js",
+      "/static/js/libs/bootstrap.min.js"
+    );
+  </script>
+  {% block scripts %}
+  {% endblock %}
+  </body>
+</html>
